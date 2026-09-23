@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakura Preschool</title>
+<style>
+  :root{
+    --sky-300:#8FCBF0;
+    --sky-500:#3FA1DE;
+    --sky-700:#1E6690;
+    --sky-900:#123B54;
+    --bloom-300:#F8A4C0;
+    --bloom-500:#F2578C;
+    --bloom-700:#D13A6C;
+    --sun-300:#FFDD8A;
+    --sun-400:#FFC94A;
+    --sun-600:#E8A100;
+    --leaf-400:#7BCB96;
+    --leaf-500:#48B26B;
+    --leaf-700:#2E7C48;
+    --ink-800:#2B2A33;
+    --ink-600:#5B5A66;
+    --cream-50:#FFFAF0;
+
+    --bg:var(--cream-50);
+    --surface:#FFFFFF;
+    --surface-alt:#EAF6FF;
+    --surface-alt-2:#FFEEF4;
+    --text:var(--ink-800);
+    --text-muted:var(--ink-600);
+    --accent:var(--bloom-500);
+    --accent-strong:var(--bloom-700);
+    --accent-soft:var(--bloom-300);
+    --accent-wash:var(--surface-alt-2);
+    --sky:var(--sky-500);
+    --sky-deep:var(--sky-700);
+    --sun:var(--sun-400);
+    --leaf:var(--leaf-500);
+    --leaf-strong:var(--leaf-700);
+    --border:rgba(43,42,51,.13);
+    --shadow:rgba(209,58,108,.20);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#122234;
+      --surface:#1A2E44;
+      --surface-alt:#1C3349;
+      --surface-alt-2:#2B2440;
+      --text:#FBF3E3;
+      --text-muted:#C9D6E3;
+      --accent:#FF7FAC;
+      --accent-strong:#FFAAC8;
+      --accent-soft:#C9668C;
+      --accent-wash:#33263A;
+      --sky:#7FC6F2;
+      --sky-deep:#BFE3FA;
+      --sun:#FFD873;
+      --leaf:#7FD69B;
+      --leaf-strong:#A6E6BC;
+      --border:rgba(251,243,227,.16);
+      --shadow:rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#122234;
+    --surface:#1A2E44;
+    --surface-alt:#1C3349;
+    --surface-alt-2:#2B2440;
+    --text:#FBF3E3;
+    --text-muted:#C9D6E3;
+    --accent:#FF7FAC;
+    --accent-strong:#FFAAC8;
+    --accent-soft:#C9668C;
+    --accent-wash:#33263A;
+    --sky:#7FC6F2;
+    --sky-deep:#BFE3FA;
+    --sun:#FFD873;
+    --leaf:#7FD69B;
+    --leaf-strong:#A6E6BC;
+    --border:rgba(251,243,227,.16);
+    --shadow:rgba(0,0,0,.5);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Nunito","Segoe UI",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    padding-left:max(16px,env(safe-area-inset-left));
+    padding-right:max(16px,env(safe-area-inset-right));
+  }
+  h1,h2,h3{
+    font-family:"Baloo 2","Nunito",system-ui,sans-serif;
+    color:var(--text);
+    margin:0 0 .5em;
+    text-wrap:balance;
+    font-weight:700;
+  }
+  p{margin:0 0 1em}
+  img{max-width:100%}
+  a{color:inherit}
+  .container{max-width:1120px;margin:0 auto}
+  .si{font-family:"Noto Sans Sinhala","Nunito",sans-serif}
+  .eyebrow{
+    font-family:"Baloo 2",sans-serif;
+    font-size:.82rem;
+    font-weight:700;
+    letter-spacing:.06em;
+    color:var(--accent-strong);
+    display:inline-flex;
+    align-items:center;
+    gap:.5em;
+    margin-bottom:.9em;
+  }
+  .eyebrow::before{content:"";width:1.4em;height:1px;background:var(--accent-strong);opacity:.6}
+
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,label:focus-visible{
+    outline:3px solid var(--sky);
+    outline-offset:2px;
+    border-radius:4px;
+  }
+
+  .skip-link{
+    position:absolute;left:-999px;top:auto;
+    background:var(--surface);color:var(--text);padding:.75em 1.25em;border-radius:8px;
+    z-index:100;
+  }
+  .skip-link:focus{left:16px;top:16px}
+
+  /* ---------- Nav ---------- */
+  header.site{
+    position:sticky;top:0;z-index:40;
+    /* Matches the blue of the Sakura logo badge (same in light and dark mode) */
+    background:linear-gradient(180deg,#90B2E7 0%,#7299D8 100%);
+    border-bottom:3px solid #5A83CF;
+    box-shadow:0 4px 14px rgba(40,70,130,.18);
+    color:#13213A;
+    /* run edge-to-edge past the body's side gutter */
+    margin-left:calc(-1 * max(16px,env(safe-area-inset-left)));
+    margin-right:calc(-1 * max(16px,env(safe-area-inset-right)));
+    padding-left:max(16px,env(safe-area-inset-left));
+    padding-right:max(16px,env(safe-area-inset-right));
+  }
+  header.site .brand-name,
+  header.site nav.links a,
+  header.site .mobile-panel a:not(.btn){color:#13213A}
+  header.site nav.links a:hover{color:#13213A;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+  header.site .nav-toggle-label{border-color:rgba(19,33,58,.35);color:#13213A;background:rgba(255,255,255,.18)}
+  header.site .mobile-panel a:not(.btn){border-bottom-color:rgba(19,33,58,.18)}
+  .nav-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:.7rem 0;gap:1rem;
+  }
+  .brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;flex-shrink:0}
+  .brand-mark{
+    width:60px;height:60px;flex-shrink:0;border-radius:10px;object-fit:contain;
+    border:0;box-shadow:none;display:block;
+  }
+  @media (max-width:640px){ .brand-mark{width:50px;height:50px} }
+  .brand-name{
+    font-family:"Baloo 2",serif;font-weight:800;font-size:1.25rem;color:var(--text);
+    letter-spacing:.01em;
+  }
+  nav.links{display:flex;gap:1.5rem;align-items:center}
+  nav.links a{
+    text-decoration:none;font-size:.95rem;font-weight:700;color:var(--text-muted);
+    white-space:nowrap;
+  }
+  nav.links a:hover{color:var(--accent-strong)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+    padding:.75em 1.6em;border-radius:999px;font-weight:800;font-size:.95rem;
+    text-decoration:none;border:2px solid transparent;cursor:pointer;
+    font-family:"Baloo 2",sans-serif;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 0 0 var(--accent-strong)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-primary:active{transform:translateY(2px);box-shadow:0 2px 0 0 var(--accent-strong)}
+  .btn-ghost{background:var(--surface);color:var(--text);border-color:var(--border)}
+  .btn-ghost:hover{border-color:var(--sky);color:var(--sky-deep)}
+  .btn-block{width:100%}
+
+  #navToggle{position:absolute;opacity:0;pointer-events:none}
+  .nav-toggle-label{
+    display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--border);
+    align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;
+  }
+  .nav-toggle-label svg{width:20px;height:20px}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;padding:5.5rem 0 4rem;
+    background:#101d2b center/cover no-repeat;
+  }
+  .hero.photo-hero{background-image:url('u_63z5ddwwp4-children-8203962_1920.jpg')}
+  .hero-overlay{
+    position:absolute;inset:0;z-index:1;
+    background:linear-gradient(100deg, rgba(16,29,43,.95) 0%, rgba(16,29,43,.85) 42%, rgba(16,29,43,.52) 75%, rgba(16,29,43,.2) 100%);
+  }
+  .hero-content{position:relative;z-index:3;max-width:640px}
+  .hero h1{font-size:clamp(2.1rem,1.5rem + 2.6vw,3.3rem);line-height:1.14;color:#fff}
+  .hero .eyebrow{color:var(--sun)}
+  .hero .eyebrow::before{background:var(--sun)}
+  .hero-sub{font-size:1.08rem;color:rgba(255,255,255,.88);max-width:48ch}
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.6rem}
+  .hero .btn-ghost{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.5)}
+  .hero .btn-ghost:hover{border-color:#fff;color:#fff}
+  .trust-strip{
+    display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;margin-top:2.2rem;
+    padding-top:1.4rem;border-top:1px dashed rgba(255,255,255,.35);
+  }
+  .trust-item{display:flex;align-items:center;gap:.5em;font-size:.86rem;color:rgba(255,255,255,.92);font-weight:700}
+  .trust-item svg{width:16px;height:16px;color:var(--sun);flex-shrink:0}
+
+  .confetti-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
+  .confetti{position:absolute;top:-6%;opacity:.9;animation:fall linear infinite}
+  .confetti.petal{width:13px;height:17px;border-radius:0 100% 0 100%;background:var(--accent-soft)}
+  .confetti.dot{width:9px;height:9px;border-radius:50%;background:var(--sun)}
+  .confetti.sq{width:9px;height:9px;border-radius:2px;background:var(--sky-300)}
+  @keyframes fall{
+    0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:.95}
+    100%{transform:translateY(380px) translateX(var(--drift,20px)) rotate(300deg);opacity:.1}
+  }
+  @media (prefers-reduced-motion:reduce){ .confetti{animation:none;opacity:.5} }
+
+  /* Section background photos */
+  .section-photo{position:relative;background-size:cover;background-position:center}
+  .section-photo::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:linear-gradient(180deg, rgba(16,29,43,.87), rgba(16,29,43,.8));
+  }
+  .section-photo > .container{position:relative;z-index:1}
+  .section-photo .eyebrow{color:var(--sun)}
+  .section-photo .eyebrow::before{background:var(--sun)}
+  .section-photo .section-head h2{color:#fff}
+  .section-photo .section-head p{color:rgba(255,255,255,.85)}
+  .photo-crafts{background-image:url('alicja-children-4526384_1920.jpg')}
+  .photo-girl{background-image:url('kalyanayahaluwo-girl-7528116_1920.jpg')}
+
+  /* ---------- Sections ---------- */
+  section{padding:4.2rem 0}
+  .band-alt{background:var(--surface-alt)}
+  .band-alt2{background:var(--surface-alt-2)}
+  .section-head{max-width:60ch;margin-bottom:2.4rem}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .section-head p{color:var(--text-muted);font-size:1.05rem}
+
+  .divider{display:block;width:100%;height:44px;color:var(--surface-alt)}
+  .divider path{fill:currentColor}
+  .divider.to-bg{color:var(--bg)}
+  .divider.to-alt{color:var(--surface-alt)}
+
+  /* Philosophy */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+  .pillar-card{
+    background:var(--surface);border:2px solid var(--border);border-radius:22px;
+    padding:1.9rem 1.6rem;box-shadow:0 10px 0 -4px var(--border);
+  }
+  .pillar-icon-wrap{
+    width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.1rem;
+  }
+  .pillar-card:nth-child(1) .pillar-icon-wrap{background:var(--surface-alt-2)}
+  .pillar-card:nth-child(2) .pillar-icon-wrap{background:var(--surface-alt)}
+  .pillar-card:nth-child(3) .pillar-icon-wrap{background:color-mix(in srgb, var(--sun) 30%, transparent)}
+  .pillar-icon{width:28px;height:28px;color:var(--accent-strong)}
+  .pillar-card:nth-child(2) .pillar-icon{color:var(--sky-deep)}
+  .pillar-card:nth-child(3) .pillar-icon{color:var(--sun-600)}
+  .pillar-card h3{font-size:1.18rem;margin-bottom:.5em}
+  .pillar-card p{color:var(--text-muted);font-size:.97rem;margin:0}
+
+  /* Programs */
+  .programs{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+  .programs-2{grid-template-columns:1fr 1fr;max-width:820px;margin-inline:auto}
+  .program-card{
+    background:var(--surface);border:2px solid var(--border);border-radius:22px;
+    padding:1.9rem 1.6rem;display:flex;flex-direction:column;gap:.9rem;
+    box-shadow:0 10px 0 -4px var(--border);
+  }
+  .bloom-stage{display:flex;align-items:center;gap:.3rem;height:32px}
+  .bloom-petal{width:14px;height:18px;border-radius:0 100% 0 100%;background:var(--accent-soft)}
+  .bloom-petal.filled{background:var(--accent)}
+  .bloom-petal.dim{background:var(--border)}
+  .program-card h3{font-size:1.3rem;margin-bottom:0}
+  .program-age{
+    display:inline-block;font-size:.82rem;font-weight:800;color:var(--accent-strong);
+    background:var(--accent-wash);padding:.3em .8em;border-radius:999px;width:fit-content;
+  }
+  .program-card p{color:var(--text-muted);font-size:.95rem;margin:0}
+  .program-link{margin-top:auto;font-weight:800;color:var(--accent-strong);text-decoration:none}
+  .program-link:hover{text-decoration:underline}
+
+  /* Day in bloom */
+  .timeline{position:relative;max-width:760px;margin:0 auto}
+  .timeline::before{
+    content:"";position:absolute;left:96px;top:6px;bottom:6px;width:3px;
+    background:linear-gradient(var(--accent-soft),var(--sky));opacity:.5;border-radius:2px;
+  }
+  .t-row{display:grid;grid-template-columns:80px 32px 1fr;gap:0 1rem;align-items:start;padding:.8rem 0}
+  .t-time{font-weight:800;font-size:.88rem;color:var(--text-muted);padding-top:.15rem;text-align:right;font-variant-numeric:tabular-nums}
+  .t-dot-wrap{display:flex;justify-content:center;padding-top:.3rem}
+  .t-dot{width:15px;height:15px;border-radius:50%;background:var(--surface);border:3px solid var(--accent)}
+  .t-body b{display:block;font-size:1.02rem;margin-bottom:.15em}
+  .t-body span{color:var(--text-muted);font-size:.92rem}
+
+  /* Why us */
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  .feature{
+    display:flex;gap:1rem;align-items:flex-start;
+    background:var(--surface);border:2px solid var(--border);border-radius:18px;padding:1.4rem;
+  }
+  .feature-ico{
+    width:44px;height:44px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    background:var(--surface-alt);
+  }
+  .feature-ico svg{width:24px;height:24px;color:var(--sky-deep)}
+  .feature:nth-child(3n+2) .feature-ico{background:var(--surface-alt-2)}
+  .feature:nth-child(3n+2) .feature-ico svg{color:var(--accent-strong)}
+  .feature:nth-child(3n) .feature-ico{background:color-mix(in srgb, var(--sun) 30%, transparent)}
+  .feature:nth-child(3n) .feature-ico svg{color:var(--sun-600)}
+  .feature h3{font-size:1.02rem;margin-bottom:.3em}
+  .feature p{font-size:.9rem;color:var(--text-muted);margin:0}
+
+  /* Our Year */
+  .seasons{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+  .season-card{
+    border-radius:20px;padding:1.5rem;min-height:210px;display:flex;flex-direction:column;
+    justify-content:space-between;color:#fff;position:relative;overflow:hidden;
+  }
+  .season-card h3{color:#fff;font-size:1.08rem;margin-bottom:.2em}
+  .season-card p{color:rgba(255,255,255,.92);font-size:.85rem;margin:0}
+  .season-card span.month{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;opacity:.85}
+  .season-glyph{width:36px;height:36px;position:relative;z-index:1}
+  .s-1{background:linear-gradient(160deg,#F2578C,#D13A6C)}
+  .s-2{background:linear-gradient(160deg,#FFC94A,#E8A100)}
+  .s-3{background:linear-gradient(160deg,#3FA1DE,#1E6690)}
+  .s-4{background:linear-gradient(160deg,#48B26B,#2E7C48)}
+
+  /* FAQ */
+  .faq{max-width:760px;margin:0 auto}
+  .faq details{border-bottom:1px solid var(--border);padding:1.1rem 0}
+  .faq summary{
+    cursor:pointer;font-weight:800;font-size:1.02rem;list-style:none;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    font-family:"Baloo 2",sans-serif;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .q-icon{width:22px;height:22px;flex-shrink:0;color:var(--accent);transition:transform .2s ease}
+  .faq details[open] summary .q-icon{transform:rotate(45deg)}
+  .faq .a{color:var(--text-muted);padding-top:.8rem;font-size:.97rem;max-width:65ch}
+
+  /* Enroll */
+  .enroll-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:2.4rem;align-items:start}
+  .contact-cards{display:flex;flex-direction:column;gap:1rem}
+  .contact-card{
+    background:var(--surface);border:2px solid var(--border);border-radius:18px;
+    padding:1.2rem 1.35rem;display:flex;gap:1rem;align-items:center;text-decoration:none;color:var(--text);
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .contact-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .contact-card svg{width:22px;height:22px;color:var(--accent-strong);flex-shrink:0}
+  .contact-card b{display:block;font-size:.95rem}
+  .contact-card span{color:var(--text-muted);font-size:.88rem}
+  .hours-card{
+    background:var(--surface-alt);border-radius:18px;padding:1.2rem 1.35rem;font-size:.9rem;color:var(--text-muted);
+  }
+  .hours-card b{color:var(--text)}
+  .hours-row{display:flex;justify-content:space-between;padding:.25rem 0;font-variant-numeric:tabular-nums}
+
+  .form-card{
+    background:var(--surface);border:2px solid var(--border);border-radius:24px;padding:2rem;
+    box-shadow:0 14px 0 -6px var(--border);
+  }
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+  .field.full{grid-column:1 / -1}
+  .field label{font-size:.85rem;font-weight:800;color:var(--text)}
+  .field input,.field select,.field textarea{
+    font:inherit;padding:.7em .9em;border-radius:12px;border:2px solid var(--border);
+    background:var(--bg);color:var(--text);
+  }
+  .field textarea{resize:vertical;min-height:90px}
+  .form-note{font-size:.82rem;color:var(--text-muted);margin-top:.9rem}
+  .form-status{
+    margin-top:.9rem;padding:.8em 1em;border-radius:12px;background:var(--accent-wash);
+    color:var(--accent-strong);font-size:.9rem;font-weight:700;
+  }
+
+  /* Footer */
+  footer{padding:3rem 0 2.5rem;border-top:1px solid var(--border)}
+  .footer-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .footer-brand{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem}
+  .footer-brand .brand-mark{width:72px;height:72px}
+  footer p{color:var(--text-muted);font-size:.88rem;max-width:32ch}
+  .footer-links{display:flex;gap:2.5rem;flex-wrap:wrap}
+  .footer-links h4{font-family:"Baloo 2",sans-serif;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 .8em}
+  .footer-links a{display:block;text-decoration:none;color:var(--text);font-size:.92rem;margin-bottom:.55em}
+  .footer-links a:hover{color:var(--accent-strong)}
+  .footer-bottom{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:.82rem;color:var(--text-muted)}
+
+  /* Responsive */
+  @media (max-width:920px){
+    .hero-overlay{background:linear-gradient(180deg, rgba(16,29,43,.9), rgba(16,29,43,.86))}
+    .pillars,.programs,.feature-grid{grid-template-columns:1fr 1fr}
+    .seasons{grid-template-columns:1fr 1fr}
+    .enroll-grid{grid-template-columns:1fr}
+    nav.links{display:none}
+    .nav-toggle-label{display:flex}
+    header.site:has(#navToggle:checked) .mobile-panel{max-height:480px;padding-top:.6rem;padding-bottom:1.2rem}
+  }
+  @media (max-width:640px){
+    section{padding:3rem 0}
+    .pillars,.programs,.feature-grid,.seasons,.form-grid{grid-template-columns:1fr}
+    .timeline::before{left:60px}
+    .t-row{grid-template-columns:52px 24px 1fr}
+    .footer-grid{flex-direction:column}
+  }
+  .mobile-panel{
+    max-height:0;overflow:hidden;transition:max-height .25s ease;
+    display:flex;flex-direction:column;gap:.9rem;
+  }
+  .mobile-panel a{text-decoration:none;color:var(--text);font-weight:700;padding:.55rem 0;border-bottom:1px solid var(--border)}
+  .mobile-panel a.btn{border-bottom:0;margin-top:.4rem;padding:.8em 1.6em}
+  .mobile-panel .btn{display:none}
+
+  /* Map */
+  .map-wrap{
+    position:relative;border-radius:22px;overflow:hidden;border:2px solid var(--border);
+    box-shadow:0 10px 0 -4px var(--border);aspect-ratio:16/7;background:var(--surface-alt);
+  }
+  .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .map-actions{display:flex;flex-wrap:wrap;gap:.8rem 1.2rem;align-items:center;justify-content:space-between;margin-top:1.2rem}
+  .map-actions p{margin:0;color:var(--text-muted);font-weight:700}
+
+  /* Phone polish */
+  .contact-card span{overflow-wrap:anywhere}
+  @media (max-width:640px){
+    .nav-row{padding:.5rem 0;gap:.6rem}
+    .brand{gap:.5rem}
+    .brand-name{font-size:1.1rem}
+    .hero{padding:3.2rem 0 2.8rem}
+    .hero-sub{font-size:1rem}
+    .hero-ctas .btn{flex:1 1 100%}
+    .trust-strip{gap:.5rem 1rem}
+    .section-head{margin-bottom:1.8rem}
+    .pillar-card,.program-card{padding:1.5rem 1.3rem}
+    .form-card{padding:1.3rem;border-radius:20px}
+    .field{margin-bottom:.4rem}
+    .map-wrap{aspect-ratio:4/5;border-radius:18px}
+    .map-actions .btn{flex:1 1 100%}
+    .footer-brand .brand-mark{width:60px;height:60px}
+  }
+  @media (max-width:480px){
+    .nav-row > .btn-primary{display:none}
+    .mobile-panel .btn{display:inline-flex}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="container nav-row">
+    <a href="#top" class="brand">
+      <img class="brand-mark" src="sakura.jpg" alt="Sakura Preschool logo">
+      <span class="brand-name">Sakura Preschool</span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#philosophy">Our Story</a>
+      <a href="#programs">Programs</a>
+      <a href="#day">Our Morning</a>
+      <a href="#why">Why Us</a>
+      <a href="#seasons">Our Year</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#enroll" class="btn btn-primary" style="flex-shrink:0">Book a Visit</a>
+    <input type="checkbox" id="navToggle">
+    <label for="navToggle" class="nav-toggle-label" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </label>
+  </div>
+  <div class="container">
+    <div class="mobile-panel">
+      <a href="#philosophy">Our Story</a>
+      <a href="#programs">Programs</a>
+      <a href="#day">Our Morning</a>
+      <a href="#why">Why Us</a>
+      <a href="#seasons">Our Year</a>
+      <a href="#faq">FAQ</a>
+      <a href="#map">Find Us</a>
+      <a href="#enroll" class="btn btn-primary">Book a Visit</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div id="top"></div>
+  <section class="hero photo-hero">
+    <div class="hero-overlay"></div>
+    <div class="confetti-field" id="confettiField" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <p class="eyebrow"><span class="si">ආයුබෝවන්</span> &middot; Preschool in Matara, Sri Lanka</p>
+      <h1>Where little learners grow, play, and shine.</h1>
+      <p class="hero-sub">Sakura Preschool is a warm, activity-based program building your child&rsquo;s first words in Sinhala and English &mdash; through play, songs, and stories, before they start school.</p>
+      <div class="hero-ctas">
+        <a href="#enroll" class="btn btn-primary">Book a Visit</a>
+        <a href="#day" class="btn btn-ghost">See a Morning at Sakura</a>
+      </div>
+      <div class="trust-strip">
+        <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M4 20c0-3.3 2.7-5.5 5.5-5.5S15 16.7 15 20"/></svg>Small, caring classes</span>
+        <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-4Z"/></svg>Matara, Sri Lanka</span>
+        <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Mon&ndash;Fri &middot; 8:00 AM&ndash;12:00 PM</span>
+        <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg>Now enrolling for 2027</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section id="philosophy" class="band-alt">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow" style="justify-content:center">Our story</p>
+        <h2>Little roots, big growth.</h2>
+        <p>Sakura is named for the blossom &mdash; because every child, like every flower, opens up in their own time.</p>
+        <p style="font-size:.85rem;font-style:italic;color:var(--text-muted)">Our motto: &ldquo;They Grow We Clone.&rdquo;</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar-card">
+          <div class="pillar-icon-wrap"><svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="20" width="12" height="12" rx="1"/><circle cx="32" cy="16" r="6"/><path d="M28 34c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+          <h3>Play is how they learn</h3>
+          <p>Blocks, art, music, and pretend play build focus, motor skills, and confidence &mdash; long before a desk and worksheet ever could.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon-wrap"><svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14h14v20H8z"/><path d="M26 14h14v20H26z"/><path d="M15 20h0M15 26h0M33 20h0M33 26h0"/></svg></div>
+          <h3>Sinhala &amp; English, every day</h3>
+          <p>Daily songs, stories, and conversation in both languages, so children arrive at Grade 1 already comfortable with letters, sounds, and simple words.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon-wrap"><svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4 6 14v8c0 12 7.6 19 18 22 10.4-3 18-10 18-22v-8L24 4Z"/><path d="M17 24l5 5 9-10"/></svg></div>
+          <h3>Ready, gently, for school</h3>
+          <p>Routines, sharing, and following along in a group &mdash; the everyday skills that make the first day of &ldquo;real&rdquo; school feel familiar, not frightening.</p>
+        </div>
+      </div>
+    </div>
+    <svg class="divider to-bg" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,20 C200,50 400,0 600,25 C800,50 1000,0 1200,20 L1200,60 L0,60 Z"/></svg>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section id="programs">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Programs by age</p>
+        <h2>Two classes, one garden.</h2>
+        <p>Children move up as they&rsquo;re ready &mdash; not on a fixed birthday &mdash; so the pace always matches the child.</p>
+      </div>
+      <div class="programs programs-2">
+        <div class="program-card">
+          <div class="bloom-stage" aria-hidden="true">
+            <span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal dim"></span><span class="bloom-petal dim"></span><span class="bloom-petal dim"></span>
+          </div>
+          <h3>Baby Class</h3>
+          <span class="program-age">3 &ndash; 4 years</span>
+          <p>First friendships and first letters &mdash; numbers and sounds hidden inside games, art, songs, and pretend play, with growing conversation in both Sinhala and English.</p>
+          <a class="program-link" href="#enroll-form" data-program="Baby Class (3-4yr)">Enquire about Baby Class &rarr;</a>
+        </div>
+        <div class="program-card">
+          <div class="bloom-stage" aria-hidden="true">
+            <span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span>
+          </div>
+          <h3>Upper Class &middot; Grade-Ready</h3>
+          <span class="program-age">4 &ndash; 5 years</span>
+          <p>Reading readiness, early numbers, and the everyday routines of a real classroom &mdash; so Grade 1 feels familiar from day one.</p>
+          <a class="program-link" href="#enroll-form" data-program="Upper Class (4-5yr)">Enquire about Upper Class &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A MORNING AT SAKURA -->
+  <section id="day" class="band-alt">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow" style="justify-content:center">A morning at Sakura</p>
+        <h2>What a Tuesday actually looks like.</h2>
+        <p>The same gentle rhythm every day, 8:00 AM to 12:00 PM &mdash; children thrive on knowing what comes next.</p>
+      </div>
+      <div class="timeline">
+        <div class="t-row"><div class="t-time">8:00</div><div class="t-dot-wrap"><span class="t-dot"></span></div><div class="t-body"><b>Arrival &amp; free play</b><span>Gates open, unhurried greetings, quiet centers</span></div></div>
+        <div class="t-row"><div class="t-time">8:20</div><div class="t-dot-wrap"><span class="t-dot"></span></div><div class="t-body"><b>Morning circle</b><span>Greeting song in Sinhala &amp; English, weather, calendar</span></div></div>
+        <div class="t-row"><div class="t-time">8:45</div><div class="t-dot-wrap"><span class="t-dot"></span></div><div class="t-body"><b>Learning centers</b><span>Letters, numbers, and art rotate by room</span></div></div>
+        <div class="t-row"><div class="t-time">9:30</div><div class="t-dot-wrap"><span class="t-dot"></span></div><div class="t-body"><b>Active play</b><span>Music, movement, and outdoor games</span></div></div>
+        <div class="t-row"><div class="t-time">10:00</div><div class="t-dot-wrap"><span class="t-dot"></span></div><div class="t-body"><b>Snack &amp; story</b><span>Family-style snack, read-aloud on the rug</span></div></div>
+        <div class="t-row"><div class="t-time">10:30</div><div class="t-dot-wrap"><span class="t-dot"></span></div><div class="t-body"><b>Group project</b><span>A theme the whole room builds together</span></div></div>
+        <div class="t-row"><div class="t-time">11:15</div><div class="t-dot-wrap"><span class="t-dot"></span></div><div class="t-body"><b>Closing circle</b><span>Songs, reflection, and backpacks on</span></div></div>
+        <div class="t-row"><div class="t-time">11:45</div><div class="t-dot-wrap"><span class="t-dot"></span></div><div class="t-body"><b>Dismissal prep</b><span>Shoes, bags, and a calm goodbye routine</span></div></div>
+        <div class="t-row"><div class="t-time">12:00</div><div class="t-dot-wrap"><span class="t-dot"></span></div><div class="t-body"><b>Pickup</b><span>Gate opens for families &mdash; see you tomorrow!</span></div></div>
+      </div>
+    </div>
+    <svg class="divider to-bg" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,20 C200,50 400,0 600,25 C800,50 1000,0 1200,20 L1200,60 L0,60 Z"/></svg>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why" class="section-photo photo-crafts">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Why families choose Sakura</p>
+        <h2>The details you&rsquo;d ask a friend about.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="M8 9l3 3-3 3M13 15h3"/></svg></div>
+          <div><h3>Activity-based learning</h3><p>Every lesson is a game &mdash; building creativity, focus, and problem-solving through hands-on play, not worksheets.</p></div>
+        </div>
+        <div class="feature">
+          <div class="feature-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-4Z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div><h3>A safe, secure campus</h3><p>A child-friendly, closely supervised environment built for peace of mind &mdash; safe spaces, watchful teachers, happy days.</p></div>
+        </div>
+        <div class="feature">
+          <div class="feature-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 4 2 10l10 6 10-6Z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg></div>
+          <div><h3>Qualified, caring teachers</h3><p>Warm, experienced teachers trained in modern early-childhood methods, who know every child by name.</p></div>
+        </div>
+        <div class="feature">
+          <div class="feature-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 14h14v20H8z" transform="scale(0.7) translate(3,3)"/><path d="M4 5h7v14H4zM13 5h7v14h-7z"/></svg></div>
+          <div><h3>Sinhala &amp; English foundations</h3><p>Daily practice in both languages so your child starts Grade 1 with confidence, not catch-up.</p></div>
+        </div>
+        <div class="feature">
+          <div class="feature-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+          <div><h3>A focused morning program</h3><p>A dedicated Mon&ndash;Fri session, 8:00 AM&ndash;12:00 PM, so little ones head home well before afternoon fatigue sets in.</p></div>
+        </div>
+        <div class="feature">
+          <div class="feature-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg></div>
+          <div><h3>Now enrolling for 2027</h3><p>Spots are limited for our 2027 intake &mdash; book a visit to meet the teachers and reserve your child&rsquo;s place.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR YEAR -->
+  <section id="seasons" class="band-alt">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow" style="justify-content:center">A year at Sakura</p>
+        <h2>Little celebrations, all year round.</h2>
+        <p>The school calendar follows Sri Lanka&rsquo;s own rhythm &mdash; not someone else&rsquo;s.</p>
+      </div>
+      <div class="seasons">
+        <div class="season-card s-1">
+          <svg class="season-glyph" viewBox="0 0 40 40" aria-hidden="true"><g fill="#fff" opacity=".95"><ellipse cx="20" cy="12" rx="5" ry="7"/><ellipse cx="20" cy="12" rx="5" ry="7" transform="rotate(72 20 20)"/><ellipse cx="20" cy="12" rx="5" ry="7" transform="rotate(144 20 20)"/><ellipse cx="20" cy="12" rx="5" ry="7" transform="rotate(216 20 20)"/><ellipse cx="20" cy="12" rx="5" ry="7" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3" fill="var(--sun)"/></svg>
+          <div><span class="month">April</span><h3>Avurudu Games</h3><p>Traditional New Year games and sweets bring the whole school together for a day of fun.</p></div>
+        </div>
+        <div class="season-card s-2">
+          <svg class="season-glyph" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6 26 18 20 30 14 18Z" fill="#fff" opacity=".95"/><circle cx="20" cy="18" r="4" fill="var(--sun-600)"/></svg>
+          <div><span class="month">May</span><h3>Vesak Lanterns</h3><p>Colourful lanterns and quiet stories mark Vesak &mdash; a gentle lesson in kindness and light.</p></div>
+        </div>
+        <div class="season-card s-3">
+          <svg class="season-glyph" viewBox="0 0 40 40" aria-hidden="true"><g fill="#fff" opacity=".95"><ellipse cx="14" cy="16" rx="9" ry="7"/><ellipse cx="24" cy="14" rx="8" ry="6"/></g><g stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="12" y1="28" x2="10" y2="34"/><line x1="20" y1="28" x2="18" y2="36"/><line x1="28" y1="28" x2="26" y2="34"/></g></svg>
+          <div><span class="month">Monsoon</span><h3>Cosy Indoor Play</h3><p>Rainy-season mornings move inside for music, dress-up, and craft corners.</p></div>
+        </div>
+        <div class="season-card s-4">
+          <svg class="season-glyph" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 24 16 36 16 26 23 30 35 20 28 10 35 14 23 4 16 16 16Z" fill="#fff" opacity=".95"/></svg>
+          <div><span class="month">December</span><h3>Year-End Concert</h3><p>Songs, dances, and proud families closing out a year of growing.</p></div>
+        </div>
+      </div>
+    </div>
+    <svg class="divider to-bg" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,20 C200,50 400,0 600,25 C800,50 1000,0 1200,20 L1200,60 L0,60 Z"/></svg>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow" style="justify-content:center">Questions families ask</p>
+        <h2>Good to know before you visit.</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>What ages do you accept?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">Children aged 3 to 5 (Grade-1 ready), across our Baby Class (3&ndash;4 years) and Upper Class (4&ndash;5 years). Children move up when they&rsquo;re developmentally ready, not strictly by birthday.</div>
+        </details>
+        <details>
+          <summary>What languages does my child learn?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">Sinhala and English, through daily songs, stories, and conversation &mdash; the two languages every child needs for primary school. No prior experience is needed for your child or for you.</div>
+        </details>
+        <details>
+          <summary>What curriculum do you follow?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">Activity-based, play-first learning designed to build creativity, critical thinking, and confidence &mdash; in a safe, child-friendly environment.</div>
+        </details>
+        <details>
+          <summary>Do you offer a sibling discount or fee assistance?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">Ask our director about sibling rates and fee assistance when you visit &mdash; we&rsquo;re happy to talk through what works for your family.</div>
+        </details>
+        <details>
+          <summary>What should my child bring on the first day?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">A labeled bag, a water bottle, and a full change of clothes. We provide art smocks and everything else.</div>
+        </details>
+        <details>
+          <summary>Can we visit before enrolling?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">Absolutely &mdash; visits run weekday mornings, 9:00&ndash;11:00 AM, so you can watch a real morning circle. Use the form below, call, or message us to pick a time.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENROLL -->
+  <section id="enroll" class="section-photo photo-girl">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Come visit</p>
+        <h2>Come see a morning at Sakura.</h2>
+        <p>Visits run weekday mornings so you can watch a real morning circle before you decide.</p>
+      </div>
+      <div class="enroll-grid">
+        <div>
+          <div class="contact-cards">
+            <a class="contact-card" href="tel:+94718980789">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .5 3 .7a2 2 0 0 1 1.7 2Z"/></svg>
+              <div><b>Call the front office</b><span>+94 (71) 898 0789 &middot; Mon&ndash;Fri, 8 AM&ndash;12 PM</span></div>
+            </a>
+            <a class="contact-card" href="mailto:info.sakuraacademic@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              <div><b>Email us</b><span>info.sakuraacademic@gmail.com</span></div>
+            </a>
+            <a class="contact-card" href="#map">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg>
+              <div><b>Visit the campus</b><span>Matara, Sri Lanka</span></div>
+            </a>
+          </div>
+          <div class="hours-card" style="margin-top:1rem">
+            <b>Office hours</b>
+            <div class="hours-row"><span>Monday&ndash;Friday</span><span>8:00 AM&ndash;12:00 PM</span></div>
+            <div class="hours-row"><span>Visit slots</span><span>9:00&ndash;11:00 AM</span></div>
+            <div class="hours-row"><span>Weekends</span><span>Closed</span></div>
+          </div>
+        </div>
+
+        <form class="form-card" id="enroll-form" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="parentName">Parent / guardian name</label>
+              <input id="parentName" name="parentName" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="parentEmail">Email</label>
+              <input id="parentEmail" name="parentEmail" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="parentPhone">Phone</label>
+              <input id="parentPhone" name="parentPhone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="childName">Child&rsquo;s name</label>
+              <input id="childName" name="childName" type="text">
+            </div>
+            <div class="field">
+              <label for="childAge">Child&rsquo;s age</label>
+              <input id="childAge" name="childAge" type="text" placeholder="e.g. 3 years, 4 months">
+            </div>
+            <div class="field">
+              <label for="program">Program of interest</label>
+              <select id="program" name="program">
+                <option value="Not sure yet">Not sure yet</option>
+                <option value="Baby Class (3-4yr)">Baby Class (3&ndash;4yr)</option>
+                <option value="Upper Class (4-5yr)">Upper Class (4&ndash;5yr)</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="message">Anything you&rsquo;d like us to know?</label>
+              <textarea id="message" name="message" placeholder="Preferred visit times, start date, questions, etc."></textarea>
+            </div>
+          </div>
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <button type="submit" class="btn btn-primary btn-block" id="enrollSubmit">Send Inquiry</button>
+          <p class="form-note">Your inquiry is sent straight to our inbox. If that ever fails, it opens your email app instead so nothing gets lost.</p>
+          <p class="form-status" id="formStatus" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="map">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow" style="justify-content:center">Find us</p>
+        <h2>Come say hello in Matara.</h2>
+        <p>Drop by during visit hours, weekday mornings 9:00&ndash;11:00 AM.</p>
+      </div>
+      <div class="map-wrap">
+        <iframe title="Map showing Sakura Preschool in Matara, Sri Lanka" src="https://www.google.com/maps?q=Sakura+Pre+School,+Matara,+Sri+Lanka&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <div class="map-actions">
+        <p>Sakura Pre School &middot; XG4P+M93, Matara, Sri Lanka</p>
+        <a class="btn btn-primary" href="https://share.google/7iGaFHj0B5VLXuHqC" target="_blank" rel="noopener">Open in Google Maps</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img class="brand-mark" src="sakura.jpg" alt="Sakura Preschool logo">
+          <span class="brand-name">Sakura Preschool</span>
+        </div>
+        <p>A play-based preschool in Matara, Sri Lanka, building Sinhala &amp; English foundations for ages 3&ndash;5 years.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Explore</h4>
+          <a href="#philosophy">Our Story</a>
+          <a href="#programs">Programs</a>
+          <a href="#day">Our Morning</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <a href="tel:+94718980789">+94 (71) 898 0789</a>
+          <a href="mailto:info.sakuraacademic@gmail.com">info.sakuraacademic@gmail.com</a>
+          <a href="#map">Matara, Sri Lanka</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026&ndash;2027 Sakura Preschool, Matara. All are welcome here.</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var field = document.getElementById('confettiField');
+    if (field) {
+      var kinds = ['petal','dot','sq'];
+      var n = 22;
+      for (var i = 0; i < n; i++) {
+        var p = document.createElement('span');
+        p.className = 'confetti ' + kinds[i % kinds.length];
+        p.style.left = (Math.random() * 100) + '%';
+        p.style.setProperty('--drift', (Math.random() * 70 - 35) + 'px');
+        p.style.animationDuration = (5.5 + Math.random() * 6) + 's';
+        p.style.animationDelay = (Math.random() * 8) + 's';
+        p.style.transform = 'scale(' + (0.6 + Math.random() * 0.7) + ')';
+        field.appendChild(p);
+      }
+    }
+
+    // ---- Enrollment inquiry: auto-email via Web3Forms, with a mailto fallback ----
+    // 1) Go to https://web3forms.com and enter info.sakuraacademic@gmail.com — they email
+    //    you a free Access Key (it is NOT secret; it is meant to be public in the HTML).
+    // 2) Paste that key below, replacing the placeholder text.
+    var WEB3FORMS_ACCESS_KEY = 'b90e11c1-1aae-424b-886a-239b6dd7b7b3';
+
+    // ---- Close the phone menu after a link is tapped ----
+    var navToggle = document.getElementById('navToggle');
+    document.querySelectorAll('.mobile-panel a').forEach(function (a) {
+      a.addEventListener('click', function () { if (navToggle) navToggle.checked = false; });
+    });
+
+    // ---- Connect the class cards and the child's age to the "Program of interest" dropdown ----
+    var programSelect = document.getElementById('program');
+    var ageInput = document.getElementById('childAge');
+    var programPicked = false;
+    document.querySelectorAll('.program-link[data-program]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (programSelect) { programSelect.value = link.getAttribute('data-program'); programPicked = true; }
+      });
+    });
+    if (programSelect) programSelect.addEventListener('change', function () { programPicked = true; });
+    if (ageInput && programSelect) {
+      ageInput.addEventListener('input', function () {
+        if (programPicked) return;
+        var years = parseInt(ageInput.value, 10);
+        programSelect.value = years === 3 ? 'Baby Class (3-4yr)'
+                            : (years === 4 || years === 5) ? 'Upper Class (4-5yr)'
+                            : 'Not sure yet';
+      });
+    }
+
+    var form = document.getElementById('enroll-form');
+    var status = document.getElementById('formStatus');
+    var submitBtn = document.getElementById('enrollSubmit');
+
+    function showStatus(text) {
+      if (!status) return;
+      status.textContent = text;
+      status.hidden = false;
+    }
+
+    function sendByMailto(get) {
+      var childOrParent = get('childName') || get('parentName') || 'your family';
+      var subject = 'Visit Inquiry — ' + childOrParent;
+      var lines = [
+        'Parent/Guardian: ' + get('parentName'),
+        'Email: ' + get('parentEmail'),
+        'Phone: ' + get('parentPhone'),
+        'Child’s Name: ' + get('childName'),
+        'Child’s Age: ' + get('childAge'),
+        'Program of Interest: ' + get('program'),
+        '',
+        'Message:',
+        get('message')
+      ];
+      var body = lines.join('\n');
+      var url = 'mailto:info.sakuraacademic@gmail.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+      window.location.href = url;
+      showStatus('Opening your email app now… if nothing happens, email us directly at info.sakuraacademic@gmail.com.');
+    }
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        var get = function (k) { return (data.get(k) || '').toString().trim(); };
+
+        var keyIsSet = WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY.indexOf('YOUR_') !== 0;
+        if (!keyIsSet) {
+          sendByMailto(get);
+          return;
+        }
+
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+        data.append('access_key', WEB3FORMS_ACCESS_KEY);
+        data.append('subject', 'New Visit Inquiry — Sakura Preschool');
+        data.append('from_name', 'Sakura Preschool Website');
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        }).then(function (res) { return res.json(); })
+          .then(function (json) {
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Inquiry'; }
+            if (json && json.success) {
+              showStatus('Thank you! Your inquiry has been sent — we’ll be in touch soon.');
+              form.reset();
+            } else {
+              sendByMailto(get);
+            }
+          })
+          .catch(function () {
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Inquiry'; }
+            sendByMailto(get);
+          });
+      });
+    }
+  })();
+</script>
+</body>
+</html>
