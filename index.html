@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sakura Preschool Matara | Play-Based Preschool, Ages 2½–5</title>
-<meta name="description" content="Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 2½–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.">
+<title>Sakura Preschool Matara | Play Group, LKG & UKG Classes</title>
+<meta name="description" content="Play-based preschool in Matara since 2000. Play Group, LKG & UKG for ages 2½–5, taught in Sinhala & English. Mon–Fri, 8 AM–12 PM. Book a visit today!">
 <meta name="keywords" content="Sakura Preschool, preschool Matara, nursery school Matara, pre school Matara, kindergarten Sri Lanka, play group Matara, LKG UKG Matara, Sinhala English preschool, පෙර පාසල මාතර">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Sakura Preschool">
@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="Sakura Preschool">
 <meta property="og:locale" content="en_LK">
 <meta property="og:url" content="https://sakura-pre-school.vercel.app/">
-<meta property="og:title" content="Sakura Preschool Matara | Play-Based Preschool, Ages 2½–5">
-<meta property="og:description" content="Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 2½–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.">
+<meta property="og:title" content="Sakura Preschool Matara | Play Group, LKG & UKG Classes">
+<meta property="og:description" content="Play-based preschool in Matara since 2000. Play Group, LKG & UKG for ages 2½–5, taught in Sinhala & English. Mon–Fri, 8 AM–12 PM. Book a visit today!">
 <meta property="og:image" content="https://sakura-pre-school.vercel.app/u_63z5ddwwp4-children-8203962_1920.jpg">
 <meta property="og:image:alt" content="Children playing and learning at Sakura Preschool, Matara">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sakura Preschool Matara | Play-Based Preschool, Ages 2½–5">
-<meta name="twitter:description" content="Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 2½–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.">
+<meta name="twitter:title" content="Sakura Preschool Matara | Play Group, LKG & UKG Classes">
+<meta name="twitter:description" content="Play-based preschool in Matara since 2000. Play Group, LKG & UKG for ages 2½–5, taught in Sinhala & English. Mon–Fri, 8 AM–12 PM. Book a visit today!">
 <meta name="twitter:image" content="https://sakura-pre-school.vercel.app/u_63z5ddwwp4-children-8203962_1920.jpg">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
@@ -56,7 +56,7 @@
   "alternateName": "Sakura Pre School",
   "slogan": "They Grow We Clone",
   "foundingDate": "2000",
-  "description": "Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 2½–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.",
+  "description": "Play-based preschool in Matara since 2000. Play Group, LKG & UKG for ages 2½–5, taught in Sinhala & English. Mon–Fri, 8 AM–12 PM. Book a visit today!",
   "url": "https://sakura-pre-school.vercel.app/",
   "logo": "https://sakura-pre-school.vercel.app/icon-512.png",
   "image": [
@@ -555,6 +555,12 @@
     .hero-ctas,.trust-strip{justify-content:center}
   }
   .hero h1{font-size:clamp(2.1rem,1.5rem + 2.6vw,3.3rem);line-height:1.14;color:var(--on-photo)}
+  /* keyword line inside the H1, styled like the small eyebrow text it replaced */
+  .h1-kicker{
+    display:block;font-size:.82rem;font-weight:700;letter-spacing:.06em;line-height:1.4;
+    color:var(--on-photo-eyebrow);margin-bottom:.7rem;
+  }
+  .hero .eyebrow-stack{margin-bottom:.25em}
   .hero .eyebrow{color:var(--on-photo-eyebrow)}
   .hero .eyebrow::before{background:var(--on-photo-eyebrow)}
   .hero-sub{font-size:1.08rem;color:var(--on-photo-muted);max-width:48ch}
@@ -743,6 +749,7 @@
     font-family:"Baloo 2",sans-serif;
   }
   .faq summary::-webkit-details-marker{display:none}
+  .faq-q{font:inherit;color:inherit;margin:0;text-wrap:initial}
   .faq summary .q-icon{width:22px;height:22px;flex-shrink:0;color:var(--accent);transition:transform .2s ease}
   .faq details[open] summary .q-icon{transform:rotate(45deg)}
   .faq .a{color:var(--text-muted);padding-top:.8rem;font-size:.97rem;max-width:65ch}
@@ -781,6 +788,7 @@
   }
   .field textarea{resize:vertical;min-height:90px}
   .form-note{font-size:.82rem;color:var(--text-muted);margin-top:.9rem}
+  .form-title{font-size:1.2rem;margin:0 0 .3rem}
   .form-required-note{font-size:.82rem;color:var(--text-muted);margin:0 0 1rem}
   .req{color:var(--error);font-weight:800}
   .field-error{font-size:.8rem;font-weight:700;color:var(--error)}
@@ -957,8 +965,8 @@
     <div class="hero-overlay"></div>
     <div class="confetti-field" id="confettiField" aria-hidden="true"></div>
     <div class="container hero-content">
-      <p class="eyebrow eyebrow-stack"><span class="greet"><span lang="si">ආයුබෝවන්</span> &middot; Welcome</span><span>Sakura Preschool &middot; Since 2000</span></p>
-      <h1>Where little learners grow, play, and shine.</h1>
+      <p class="eyebrow eyebrow-stack"><span class="greet"><span lang="si">ආයුබෝවන්</span> &middot; Welcome</span></p>
+      <h1><span class="h1-kicker">Sakura Preschool, Matara &middot; Since 2000</span>Where little learners grow, play, and shine.</h1>
       <p class="hero-sub">Sakura Preschool is a warm, activity-based program building your child&rsquo;s first words in Sinhala and English &mdash; through play, songs, and stories, before they start school.</p>
       <div class="hero-ctas">
         <a href="#enroll" class="btn btn-primary">Book a Visit</a>
@@ -978,8 +986,8 @@
   <section id="philosophy" class="band-alt">
     <div class="container">
       <div class="section-head center">
-        <p class="eyebrow" style="justify-content:center">Our story</p>
-        <h2>Little roots, big growth.</h2>
+        <p class="eyebrow" style="justify-content:center">Little roots, big growth</p>
+        <h2>A play-based preschool in Matara since 2000</h2>
         <p>Sakura is named for the blossom &mdash; because every child, like every flower, opens up in their own time. We&rsquo;ve been welcoming Matara&rsquo;s little ones since 2000.</p>
         <p style="font-size:.85rem;font-style:italic;color:var(--text-muted)">Our motto: &ldquo;They Grow We Clone.&rdquo;</p>
       </div>
@@ -1008,8 +1016,8 @@
   <section id="programs">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Programs by age</p>
-        <h2>Three classes, one garden.</h2>
+        <p class="eyebrow">Three classes, one garden</p>
+        <h2>Play Group, LKG &amp; UKG classes for ages 2&frac12;&ndash;5</h2>
         <p>Children move up as they&rsquo;re ready &mdash; not on a fixed birthday &mdash; so the pace always matches the child.</p>
       </div>
       <div class="programs">
@@ -1026,7 +1034,7 @@
           <div class="bloom-stage" aria-hidden="true">
             <span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal dim"></span><span class="bloom-petal dim"></span>
           </div>
-          <h3>LKG</h3>
+          <h3>LKG &middot; Lower Kindergarten</h3>
           <span class="program-age">3 &ndash; 4 years</span>
           <p>First friendships and first letters &mdash; numbers and sounds hidden inside games, art, songs, and pretend play, with growing conversation in both Sinhala and English.</p>
           <a class="program-link" href="#enroll-form" data-program="LKG (3-4yr)">Enquire about LKG <span aria-hidden="true">&rarr;</span></a>
@@ -1035,7 +1043,7 @@
           <div class="bloom-stage" aria-hidden="true">
             <span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span>
           </div>
-          <h3>UKG &middot; Grade-Ready</h3>
+          <h3>UKG &middot; Upper Kindergarten</h3>
           <span class="program-age">4 &ndash; 5 years</span>
           <p>Reading readiness, early numbers, and the everyday routines of a real classroom &mdash; so Grade 1 feels familiar from day one.</p>
           <a class="program-link" href="#enroll-form" data-program="UKG (4-5yr)">Enquire about UKG <span aria-hidden="true">&rarr;</span></a>
@@ -1048,8 +1056,8 @@
   <section id="day" class="band-alt">
     <div class="container">
       <div class="section-head center">
-        <p class="eyebrow" style="justify-content:center">A morning at Sakura</p>
-        <h2>What a Tuesday actually looks like.</h2>
+        <p class="eyebrow" style="justify-content:center">What a Tuesday actually looks like</p>
+        <h2>A typical preschool morning, 8:00 AM&ndash;12:00 PM</h2>
         <p>The same gentle rhythm every day, 8:00 AM to 12:00 PM &mdash; children thrive on knowing what comes next.</p>
       </div>
       <ol class="timeline">
@@ -1071,8 +1079,8 @@
   <section id="why" class="section-photo photo-crafts">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Why families choose Sakura</p>
-        <h2>The details you&rsquo;d ask a friend about.</h2>
+        <p class="eyebrow">The details you&rsquo;d ask a friend about</p>
+        <h2>Why Matara families choose Sakura Preschool</h2>
       </div>
       <div class="feature-grid">
         <div class="feature">
@@ -1107,8 +1115,8 @@
   <section id="seasons" class="band-alt">
     <div class="container">
       <div class="section-head center">
-        <p class="eyebrow" style="justify-content:center">A year at Sakura</p>
-        <h2>Little celebrations, all year round.</h2>
+        <p class="eyebrow" style="justify-content:center">Little celebrations, all year round</p>
+        <h2>Festivals &amp; celebrations through the school year</h2>
         <p>The school calendar follows Sri Lanka&rsquo;s own rhythm &mdash; not someone else&rsquo;s.</p>
       </div>
       <div class="seasons">
@@ -1137,8 +1145,8 @@
   <section id="events">
     <div class="container">
       <div class="section-head center">
-        <p class="eyebrow" style="justify-content:center">Latest event</p>
-        <h2>Bringing Matara together through music.</h2>
+        <p class="eyebrow" style="justify-content:center">Latest event &middot; bringing Matara together through music</p>
+        <h2>Community events at Sakura Preschool</h2>
         <p>Beyond the classroom, Sakura is proud to stand with our community.</p>
       </div>
       <article class="event-card">
@@ -1166,32 +1174,32 @@
   <section id="faq">
     <div class="container">
       <div class="section-head center">
-        <p class="eyebrow" style="justify-content:center">Questions families ask</p>
-        <h2>Good to know before you visit.</h2>
+        <p class="eyebrow" style="justify-content:center">Good to know before you visit</p>
+        <h2>Preschool admissions: frequently asked questions</h2>
       </div>
       <div class="faq">
         <details open>
-          <summary>What ages do you accept?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <summary><h3 class="faq-q">What ages do you accept?</h3><svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
           <div class="a">Children aged 2&frac12; to 5 (Grade-1 ready), across our Play Group (2&frac12;&ndash;3 years), LKG (3&ndash;4 years) and UKG (4&ndash;5 years). Children move up when they&rsquo;re developmentally ready, not strictly by birthday.</div>
         </details>
         <details>
-          <summary>What languages does my child learn?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <summary><h3 class="faq-q">What languages does my child learn?</h3><svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
           <div class="a">Sinhala and English, through daily songs, stories, and conversation &mdash; the two languages every child needs for primary school. No prior experience is needed for your child or for you.</div>
         </details>
         <details>
-          <summary>What curriculum do you follow?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <summary><h3 class="faq-q">What curriculum do you follow?</h3><svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
           <div class="a">Activity-based, play-first learning designed to build creativity, critical thinking, and confidence &mdash; in a safe, child-friendly environment.</div>
         </details>
         <details>
-          <summary>Do you offer a sibling discount or fee assistance?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <summary><h3 class="faq-q">Do you offer a sibling discount or fee assistance?</h3><svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
           <div class="a">Ask our director about sibling rates and fee assistance when you visit &mdash; we&rsquo;re happy to talk through what works for your family.</div>
         </details>
         <details>
-          <summary>What should my child bring on the first day?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <summary><h3 class="faq-q">What should my child bring on the first day?</h3><svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
           <div class="a">A labeled bag, a water bottle, and a full change of clothes. We provide art smocks and everything else.</div>
         </details>
         <details>
-          <summary>Can we visit before enrolling?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <summary><h3 class="faq-q">Can we visit before enrolling?</h3><svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
           <div class="a">Absolutely &mdash; visits run weekday mornings, 9:00&ndash;11:00 AM, so you can watch a real morning circle. Use the form below, call, or message us to pick a time.</div>
         </details>
       </div>
@@ -1202,8 +1210,8 @@
   <section id="enroll" class="section-photo photo-girl">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Come visit</p>
-        <h2>Come see a morning at Sakura.</h2>
+        <p class="eyebrow">Come see a morning at Sakura</p>
+        <h2>Book a preschool visit in Matara</h2>
         <p>Visits run weekday mornings so you can watch a real morning circle before you decide.</p>
       </div>
       <div class="enroll-grid">
@@ -1232,7 +1240,8 @@
           </div>
         </div>
 
-        <form class="form-card" id="enroll-form" novalidate aria-label="Book a visit enquiry">
+        <form class="form-card" id="enroll-form" novalidate aria-labelledby="formTitle">
+          <h3 class="form-title" id="formTitle">Send a visit enquiry</h3>
           <p class="form-required-note">Fields marked <span class="req" aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
           <div class="form-grid">
             <div class="field">
@@ -1285,8 +1294,8 @@
   <section id="map">
     <div class="container">
       <div class="section-head center">
-        <p class="eyebrow" style="justify-content:center">Find us</p>
-        <h2>Come say hello in Matara.</h2>
+        <p class="eyebrow" style="justify-content:center">Come say hello</p>
+        <h2>Find Sakura Preschool in Matara</h2>
         <p>Drop by during visit hours, weekday mornings 9:00&ndash;11:00 AM.</p>
       </div>
       <div class="map-wrap">
