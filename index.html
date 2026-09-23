@@ -110,6 +110,9 @@
   a{color:inherit}
   .container{max-width:1120px;margin:0 auto}
   .si{font-family:"Noto Sans Sinhala","Nunito",sans-serif}
+  .greet{font-family:"Abhaya Libre","Noto Sans Sinhala",serif;font-weight:800;font-size:1.6em;line-height:1.15;letter-spacing:.02em;text-transform:none}
+  .eyebrow.eyebrow-stack{flex-direction:column;align-items:flex-start;gap:.15em}
+  .eyebrow.eyebrow-stack::before{display:none}
   .eyebrow{
     font-family:"Baloo 2",sans-serif;
     font-size:.82rem;
@@ -425,7 +428,11 @@
     .enroll-grid{grid-template-columns:1fr}
     nav.links{display:none}
     .nav-toggle-label{display:flex}
-    header.site:has(#navToggle:checked) .mobile-panel{max-height:480px;padding-top:.6rem;padding-bottom:1.2rem}
+    header.site:has(#navToggle:checked){background:var(--bg)}
+    header.site:has(#navToggle:checked) .mobile-panel{
+      max-height:calc(100vh - 80px);max-height:calc(100dvh - 80px);overflow-y:auto;
+      padding-top:.6rem;padding-bottom:2rem;
+    }
   }
   @media (max-width:640px){
     section{padding:3rem 0}
@@ -439,7 +446,7 @@
     display:flex;flex-direction:column;gap:.9rem;
   }
   .mobile-panel a{text-decoration:none;color:var(--text);font-weight:700;padding:.55rem 0;border-bottom:1px solid var(--border)}
-  .mobile-panel a.btn{border-bottom:0;margin-top:.4rem;padding:.8em 1.6em}
+  .mobile-panel a.btn{border-bottom:0;margin-top:1.2rem;margin-bottom:.6rem;padding:1.1em 1.6em;font-size:1.05rem;min-height:56px}
   .mobile-panel .btn{display:none}
 
   /* Map */
@@ -447,7 +454,10 @@
     position:relative;border-radius:22px;overflow:hidden;border:2px solid var(--border);
     box-shadow:0 10px 0 -4px var(--border);aspect-ratio:16/7;background:var(--surface-alt);
   }
-  .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;
+    /* Google's embed can't be themed, so flip it to a dark map */
+    filter:invert(90%) hue-rotate(180deg) brightness(.95) contrast(.9)}
+  .map-wrap{background:#101d2b}
   .map-actions{display:flex;flex-wrap:wrap;gap:.8rem 1.2rem;align-items:center;justify-content:space-between;margin-top:1.2rem}
   .map-actions p{margin:0;color:var(--text-muted);font-weight:700}
 
@@ -476,7 +486,7 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@500;700&family=Abhaya+Libre:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -522,7 +532,7 @@
     <div class="hero-overlay"></div>
     <div class="confetti-field" id="confettiField" aria-hidden="true"></div>
     <div class="container hero-content">
-      <p class="eyebrow"><span class="si">ආයුබෝවන්</span> &middot; Preschool in Matara, Sri Lanka</p>
+      <p class="eyebrow eyebrow-stack"><span class="greet">ආයුබෝවන් &middot; Welcome</span><span>Sakura Preschool</span></p>
       <h1>Where little learners grow, play, and shine.</h1>
       <p class="hero-sub">Sakura Preschool is a warm, activity-based program building your child&rsquo;s first words in Sinhala and English &mdash; through play, songs, and stories, before they start school.</p>
       <div class="hero-ctas">
