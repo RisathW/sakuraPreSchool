@@ -576,7 +576,8 @@
   .divider.to-alt{color:var(--surface-alt)}
   /* waves span the full width and sit flush on the section's bottom edge */
   main > section > .divider{
-    width:auto;
+    /* explicit width: an svg with width:auto sizes from its viewBox, not the container */
+    width:calc(100% + max(16px,env(safe-area-inset-left)) + max(16px,env(safe-area-inset-right)));
     margin-left:calc(-1 * max(16px,env(safe-area-inset-left)));
     margin-right:calc(-1 * max(16px,env(safe-area-inset-right)));
     margin-bottom:-4.2rem;
