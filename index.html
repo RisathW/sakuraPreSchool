@@ -3,12 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sakura Preschool Matara | Play-Based Preschool, Ages 3–5</title>
-<meta name="description" content="Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 3–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.">
+<title>Sakura Preschool Matara | Play-Based Preschool, Ages 2½–5</title>
+<meta name="description" content="Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 2½–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.">
 <meta name="keywords" content="Sakura Preschool, preschool Matara, nursery school Matara, pre school Matara, kindergarten Sri Lanka, Sinhala English preschool, පෙර පාසල මාතර">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Sakura Preschool">
 <meta name="theme-color" content="#101d2b">
+<script>
+  (function () {
+    var t;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
 <link rel="canonical" href="https://sakura-pre-school.vercel.app/">
 <link rel="alternate" hreflang="en" href="https://sakura-pre-school.vercel.app/">
 <link rel="alternate" hreflang="x-default" href="https://sakura-pre-school.vercel.app/">
@@ -21,13 +29,13 @@
 <meta property="og:site_name" content="Sakura Preschool">
 <meta property="og:locale" content="en_LK">
 <meta property="og:url" content="https://sakura-pre-school.vercel.app/">
-<meta property="og:title" content="Sakura Preschool Matara | Play-Based Preschool, Ages 3–5">
-<meta property="og:description" content="Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 3–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.">
+<meta property="og:title" content="Sakura Preschool Matara | Play-Based Preschool, Ages 2½–5">
+<meta property="og:description" content="Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 2½–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.">
 <meta property="og:image" content="https://sakura-pre-school.vercel.app/u_63z5ddwwp4-children-8203962_1920.jpg">
 <meta property="og:image:alt" content="Children playing and learning at Sakura Preschool, Matara">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sakura Preschool Matara | Play-Based Preschool, Ages 3–5">
-<meta name="twitter:description" content="Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 3–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.">
+<meta name="twitter:title" content="Sakura Preschool Matara | Play-Based Preschool, Ages 2½–5">
+<meta name="twitter:description" content="Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 2½–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.">
 <meta name="twitter:image" content="https://sakura-pre-school.vercel.app/u_63z5ddwwp4-children-8203962_1920.jpg">
 <link rel="icon" type="image/png" href="sakura-logo.png">
 <link rel="apple-touch-icon" href="sakura-logo.png">
@@ -45,7 +53,7 @@
   "alternateName": "Sakura Pre School",
   "slogan": "They Grow We Clone",
   "foundingDate": "2000",
-  "description": "Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 3–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.",
+  "description": "Sakura Preschool in Matara, Sri Lanka: a warm, play-based preschool for ages 2½–5 building Sinhala & English foundations since 2000. Mon–Fri 8:00 AM–12:00 PM. Book a visit today.",
   "url": "https://sakura-pre-school.vercel.app/",
   "logo": "https://sakura-pre-school.vercel.app/sakura-logo.png",
   "image": [
@@ -120,7 +128,7 @@
     "name": "What ages do you accept?",
     "acceptedAnswer": {
      "@type": "Answer",
-     "text": "Children aged 3 to 5 (Grade-1 ready), across our Baby Class (3–4 years) and Upper Class (4–5 years). Children move up when they’re developmentally ready, not strictly by birthday."
+     "text": "Children aged 2½ to 5 (Grade-1 ready), across our Play Group (2½–3 years), LKG (3–4 years) and UKG (4–5 years). Children move up when they’re developmentally ready, not strictly by birthday."
     }
    },
    {
@@ -186,12 +194,12 @@
     --ink-600:#5B5A66;
     --cream-50:#FFFAF0;
 
-    --bg:var(--cream-50);
+    --bg:#F5FAFF;
     --surface:#FFFFFF;
-    --surface-alt:#EAF6FF;
-    --surface-alt-2:#FFEEF4;
-    --text:var(--ink-800);
-    --text-muted:var(--ink-600);
+    --surface-alt:#E3F2FD;
+    --surface-alt-2:#FFEBF2;
+    --text:#1D2B3A;
+    --text-muted:#4E5E70;
     --accent:var(--bloom-500);
     --accent-strong:var(--bloom-700);
     --accent-soft:var(--bloom-300);
@@ -201,8 +209,21 @@
     --sun:var(--sun-400);
     --leaf:var(--leaf-500);
     --leaf-strong:var(--leaf-700);
-    --border:rgba(43,42,51,.13);
-    --shadow:rgba(209,58,108,.20);
+    --border:rgba(30,102,144,.15);
+    --shadow:rgba(30,102,144,.18);
+    --bar:#D6EEFC;
+    --bar-border:rgba(30,102,144,.18);
+    /* photo sections: bright sky wash + dark text in light theme */
+    --photo-hero-wash:linear-gradient(100deg, rgba(245,250,255,.97) 0%, rgba(245,250,255,.9) 40%, rgba(245,250,255,.5) 70%, rgba(245,250,255,.05) 100%);
+    --photo-hero-wash-sm:linear-gradient(180deg, rgba(245,250,255,.93), rgba(245,250,255,.88));
+    --photo-wash:linear-gradient(180deg, rgba(227,242,253,.93), rgba(245,250,255,.88));
+    --photo-base:#E3F2FD;
+    --on-photo:var(--text);
+    --on-photo-muted:var(--text-muted);
+    --on-photo-eyebrow:var(--accent-strong);
+    --on-photo-line:rgba(30,102,144,.3);
+    --on-photo-ghost:rgba(255,255,255,.75);
+    --on-photo-ghost-border:rgba(30,102,144,.3);
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
@@ -223,6 +244,18 @@
       --leaf-strong:#A6E6BC;
       --border:rgba(251,243,227,.16);
       --shadow:rgba(0,0,0,.5);
+      --bar:#173A57;
+      --bar-border:rgba(127,198,242,.22);
+      --photo-hero-wash:linear-gradient(100deg, rgba(16,29,43,.95) 0%, rgba(16,29,43,.85) 42%, rgba(16,29,43,.52) 75%, rgba(16,29,43,.2) 100%);
+      --photo-hero-wash-sm:linear-gradient(180deg, rgba(16,29,43,.9), rgba(16,29,43,.86));
+      --photo-wash:linear-gradient(180deg, rgba(16,29,43,.87), rgba(16,29,43,.8));
+      --photo-base:#101d2b;
+      --on-photo:#fff;
+      --on-photo-muted:rgba(255,255,255,.88);
+      --on-photo-eyebrow:var(--sun);
+      --on-photo-line:rgba(255,255,255,.35);
+      --on-photo-ghost:rgba(255,255,255,.14);
+      --on-photo-ghost-border:rgba(255,255,255,.5);
     }
   }
   :root[data-theme="dark"]{
@@ -243,6 +276,18 @@
     --leaf-strong:#A6E6BC;
     --border:rgba(251,243,227,.16);
     --shadow:rgba(0,0,0,.5);
+    --bar:#173A57;
+    --bar-border:rgba(127,198,242,.22);
+    --photo-hero-wash:linear-gradient(100deg, rgba(16,29,43,.95) 0%, rgba(16,29,43,.85) 42%, rgba(16,29,43,.52) 75%, rgba(16,29,43,.2) 100%);
+    --photo-hero-wash-sm:linear-gradient(180deg, rgba(16,29,43,.9), rgba(16,29,43,.86));
+    --photo-wash:linear-gradient(180deg, rgba(16,29,43,.87), rgba(16,29,43,.8));
+    --photo-base:#101d2b;
+    --on-photo:#fff;
+    --on-photo-muted:rgba(255,255,255,.88);
+    --on-photo-eyebrow:var(--sun);
+    --on-photo-line:rgba(255,255,255,.35);
+    --on-photo-ghost:rgba(255,255,255,.14);
+    --on-photo-ghost-border:rgba(255,255,255,.5);
   }
 
   *,*::before,*::after{box-sizing:border-box}
@@ -304,9 +349,10 @@
   /* ---------- Nav ---------- */
   header.site{
     position:sticky;top:0;z-index:40;
-    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    background:color-mix(in srgb, var(--bar) 92%, transparent);
     backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid var(--bar-border);
+    box-shadow:0 4px 18px -10px rgba(30,102,144,.35);
     /* run edge-to-edge past the body's side gutter */
     margin-left:calc(-1 * max(16px,env(safe-area-inset-left)));
     margin-right:calc(-1 * max(16px,env(safe-area-inset-right)));
@@ -334,6 +380,7 @@
     white-space:nowrap;
   }
   nav.links a:hover{color:var(--accent-strong)}
+  header.site nav.links a{color:color-mix(in srgb, var(--sky-deep) 55%, var(--text))}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:.5em;
     padding:.75em 1.6em;border-radius:999px;font-weight:800;font-size:.95rem;
@@ -349,22 +396,100 @@
   .btn-ghost:hover{border-color:var(--sky);color:var(--sky-deep)}
   .btn-block{width:100%}
 
+  /* ---------- Light / dark toggle: sunny sky with clouds <-> night sky with stars and moon ---------- */
+  .theme-toggle{
+    position:relative;flex-shrink:0;width:68px;height:32px;padding:0;border:0;border-radius:999px;
+    cursor:pointer;overflow:hidden;isolation:isolate;
+    background:linear-gradient(180deg,#2B8BE0,#63B7F2);
+    box-shadow:inset 0 2px 6px rgba(0,0,0,.35), 0 0 0 2px rgba(255,255,255,.75), 0 3px 10px -4px rgba(18,59,84,.5);
+    transition:background .6s ease, box-shadow .6s ease;
+  }
+  /* soft halo rings that follow the sun / moon */
+  .theme-toggle::before{
+    content:"";position:absolute;z-index:0;width:84px;height:84px;border-radius:50%;
+    left:-26px;top:-26px;
+    background:radial-gradient(circle, rgba(255,255,255,.22) 0 18px, rgba(255,255,255,.14) 18px 27px, rgba(255,255,255,.08) 27px 36px, transparent 36px);
+    transition:transform .6s cubic-bezier(.56,1.35,.52,1);
+  }
+  .tt-clouds,.tt-clouds::before{
+    position:absolute;border-radius:50%;background:#fff;
+    transition:transform .6s cubic-bezier(.56,1.35,.52,1);
+  }
+  .tt-clouds{
+    z-index:1;width:14px;height:14px;right:6px;bottom:-5px;
+    box-shadow:-10px 3px 0 -1px #fff, -19px 7px 0 -2px #fff, 7px -5px 0 1px #fff, 14px 2px 0 2px #fff;
+  }
+  .tt-clouds::before{
+    content:"";z-index:-1;width:12px;height:12px;right:4px;bottom:9px;background:rgba(255,255,255,.55);
+    box-shadow:-10px 4px 0 0 rgba(255,255,255,.55), 9px -2px 0 2px rgba(255,255,255,.55), -20px 9px 0 -1px rgba(255,255,255,.55);
+  }
+  .tt-stars{
+    position:absolute;z-index:1;left:12px;top:8px;width:2px;height:2px;border-radius:50%;background:#fff;
+    box-shadow:6px 9px 0 0 #fff, 16px 2px 0 -.4px #fff, 22px 13px 0 0 rgba(255,255,255,.8), 3px 17px 0 -.4px rgba(255,255,255,.7), 27px 5px 0 -.3px rgba(255,255,255,.9), 12px 14px 0 -.5px rgba(255,255,255,.6);
+    opacity:0;transform:translateY(-18px);
+    transition:opacity .5s ease, transform .6s cubic-bezier(.56,1.35,.52,1);
+  }
+  .tt-knob{
+    position:absolute;z-index:2;left:4px;top:4px;width:24px;height:24px;border-radius:50%;
+    background:#F8C924;
+    box-shadow:inset -2px -3px 4px rgba(170,110,0,.45), inset 2px 2px 3px rgba(255,255,255,.65), 0 2px 5px rgba(0,0,0,.35);
+    transition:transform .6s cubic-bezier(.56,1.35,.52,1), background .6s ease;
+  }
+  .tt-crater{
+    position:absolute;border-radius:50%;background:#A9AEB8;
+    box-shadow:inset 1px 1px 2px rgba(0,0,0,.35);opacity:0;transition:opacity .4s ease;
+  }
+  .tt-crater.c1{width:8px;height:8px;left:6px;top:4px}
+  .tt-crater.c2{width:5px;height:5px;left:14px;top:13px}
+  .tt-crater.c3{width:4px;height:4px;left:5px;top:15px}
+  .theme-toggle[aria-checked="true"]{
+    background:linear-gradient(180deg,#1A2230,#3B4558);
+    box-shadow:inset 0 2px 6px rgba(0,0,0,.6), 0 0 0 2px rgba(255,255,255,.18), 0 3px 10px -4px rgba(0,0,0,.6);
+  }
+  .theme-toggle[aria-checked="true"]::before{transform:translateX(36px)}
+  .theme-toggle[aria-checked="true"] .tt-knob{
+    transform:translateX(36px) rotate(-30deg);background:#D9DCE2;
+    box-shadow:inset -2px -3px 4px rgba(0,0,0,.3), inset 2px 2px 3px rgba(255,255,255,.7), 0 2px 5px rgba(0,0,0,.5);
+  }
+  .theme-toggle[aria-checked="true"] .tt-crater{opacity:1}
+  .theme-toggle[aria-checked="true"] .tt-clouds{transform:translateY(34px)}
+  .theme-toggle[aria-checked="true"] .tt-stars{opacity:1;transform:none}
+  .theme-toggle:hover .tt-knob{filter:brightness(1.06)}
+  @media (prefers-reduced-motion:reduce){
+    .theme-toggle,.theme-toggle *,.theme-toggle::before,.tt-clouds::before{transition:none !important}
+  }
+  /* smooth colour cross-fade while switching themes */
+  html.theme-anim *:not(.theme-toggle):not(.theme-toggle *), html.theme-anim body{
+    transition:background-color .45s ease, color .45s ease, border-color .45s ease, fill .45s ease !important;
+  }
+
+  .nav-actions{display:flex;align-items:center;gap:1.1rem;flex-shrink:0}
+  @media (max-width:640px){ .nav-actions{gap:.6rem} }
   #navToggle{position:absolute;opacity:0;pointer-events:none}
   .nav-toggle-label{
-    display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--border);
+    display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--bar-border);
+    background:color-mix(in srgb, var(--surface) 60%, transparent);color:var(--sky-deep);
     align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;
   }
   .nav-toggle-label svg{width:20px;height:20px}
 
+  /* full-bleed page bands: backgrounds run edge-to-edge past the body's side gutter */
+  main > section{
+    margin-left:calc(-1 * max(16px,env(safe-area-inset-left)));
+    margin-right:calc(-1 * max(16px,env(safe-area-inset-right)));
+    padding-left:max(16px,env(safe-area-inset-left));
+    padding-right:max(16px,env(safe-area-inset-right));
+  }
+
   /* ---------- Hero ---------- */
   .hero{
-    position:relative;overflow:hidden;padding:5.5rem 0 4rem;
-    background:#101d2b center/cover no-repeat;
+    position:relative;overflow:hidden;padding-top:5.5rem;padding-bottom:4rem;
+    background:var(--photo-base) center/cover no-repeat;
   }
   .hero.photo-hero{background-image:url('u_63z5ddwwp4-children-8203962_1920.jpg')}
   .hero-overlay{
     position:absolute;inset:0;z-index:1;
-    background:linear-gradient(100deg, rgba(16,29,43,.95) 0%, rgba(16,29,43,.85) 42%, rgba(16,29,43,.52) 75%, rgba(16,29,43,.2) 100%);
+    background:var(--photo-hero-wash);
   }
   /* full-width container so the copy sits on the left edge; the copy itself stays narrow */
   .hero-content{position:relative;z-index:3}
@@ -375,18 +500,18 @@
     .hero .eyebrow.eyebrow-stack{align-items:center}
     .hero-ctas,.trust-strip{justify-content:center}
   }
-  .hero h1{font-size:clamp(2.1rem,1.5rem + 2.6vw,3.3rem);line-height:1.14;color:#fff}
-  .hero .eyebrow{color:var(--sun)}
-  .hero .eyebrow::before{background:var(--sun)}
-  .hero-sub{font-size:1.08rem;color:rgba(255,255,255,.88);max-width:48ch}
+  .hero h1{font-size:clamp(2.1rem,1.5rem + 2.6vw,3.3rem);line-height:1.14;color:var(--on-photo)}
+  .hero .eyebrow{color:var(--on-photo-eyebrow)}
+  .hero .eyebrow::before{background:var(--on-photo-eyebrow)}
+  .hero-sub{font-size:1.08rem;color:var(--on-photo-muted);max-width:48ch}
   .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.6rem}
-  .hero .btn-ghost{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.5)}
-  .hero .btn-ghost:hover{border-color:#fff;color:#fff}
+  .hero .btn-ghost{background:var(--on-photo-ghost);color:var(--on-photo);border-color:var(--on-photo-ghost-border)}
+  .hero .btn-ghost:hover{border-color:var(--on-photo);color:var(--on-photo)}
   .trust-strip{
     display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;margin-top:2.2rem;
-    padding-top:1.4rem;border-top:1px dashed rgba(255,255,255,.35);
+    padding-top:1.4rem;border-top:1px dashed var(--on-photo-line);
   }
-  .trust-item{display:flex;align-items:center;gap:.5em;font-size:.86rem;color:rgba(255,255,255,.92);font-weight:700}
+  .trust-item{display:flex;align-items:center;gap:.5em;font-size:.86rem;color:var(--on-photo);font-weight:700}
   .trust-item svg{width:22px;height:22px;flex-shrink:0}
 
   .confetti-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
@@ -404,18 +529,18 @@
   .section-photo{position:relative;background-size:cover;background-position:center}
   .section-photo::before{
     content:"";position:absolute;inset:0;z-index:0;
-    background:linear-gradient(180deg, rgba(16,29,43,.87), rgba(16,29,43,.8));
+    background:var(--photo-wash);
   }
   .section-photo > .container{position:relative;z-index:1}
-  .section-photo .eyebrow{color:var(--sun)}
-  .section-photo .eyebrow::before{background:var(--sun)}
-  .section-photo .section-head h2{color:#fff}
-  .section-photo .section-head p{color:rgba(255,255,255,.85)}
+  .section-photo .eyebrow{color:var(--on-photo-eyebrow)}
+  .section-photo .eyebrow::before{background:var(--on-photo-eyebrow)}
+  .section-photo .section-head h2{color:var(--on-photo)}
+  .section-photo .section-head p{color:var(--on-photo-muted)}
   .photo-crafts{background-image:url('alicja-children-4526384_1920.jpg')}
   .photo-girl{background-image:url('kalyanayahaluwo-girl-7528116_1920.jpg')}
 
   /* ---------- Sections ---------- */
-  section{padding:4.2rem 0}
+  section{padding-top:4.2rem;padding-bottom:4.2rem}
   .band-alt{background:var(--surface-alt)}
   .band-alt2{background:var(--surface-alt-2)}
   .section-head{max-width:60ch;margin-bottom:2.4rem}
@@ -562,7 +687,14 @@
   }
 
   /* Footer */
-  footer{padding:3rem 0 2.5rem;border-top:1px solid var(--border)}
+  footer{
+    padding:3rem 0 2.5rem;background:var(--bar);border-top:1px solid var(--bar-border);
+    /* run edge-to-edge past the body's side gutter, like the header */
+    margin-left:calc(-1 * max(16px,env(safe-area-inset-left)));
+    margin-right:calc(-1 * max(16px,env(safe-area-inset-right)));
+    padding-left:max(16px,env(safe-area-inset-left));
+    padding-right:max(16px,env(safe-area-inset-right));
+  }
   .footer-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
   .footer-brand{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem}
   .footer-brand .brand-mark{height:72px}
@@ -574,7 +706,7 @@
   .footer-links h4{font-family:"Baloo 2",sans-serif;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 .8em}
   .footer-links a{display:block;text-decoration:none;color:var(--text);font-size:.92rem;margin-bottom:.55em}
   .footer-links a:hover{color:var(--accent-strong)}
-  .footer-bottom{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:.82rem;color:var(--text-muted);
+  .footer-bottom{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bar-border);font-size:.82rem;color:var(--text-muted);
     display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between}
   .socials{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem}
   .credit a{color:var(--text);font-weight:800;text-decoration:none}
@@ -598,20 +730,20 @@
 
   /* Responsive */
   @media (max-width:920px){
-    .hero-overlay{background:linear-gradient(180deg, rgba(16,29,43,.9), rgba(16,29,43,.86))}
+    .hero-overlay{background:var(--photo-hero-wash-sm)}
     .pillars,.programs,.feature-grid{grid-template-columns:1fr 1fr}
     .seasons{grid-template-columns:1fr 1fr}
     .enroll-grid{grid-template-columns:1fr}
     nav.links{display:none}
     .nav-toggle-label{display:flex}
-    header.site:has(#navToggle:checked){background:var(--bg)}
+    header.site:has(#navToggle:checked){background:var(--bar)}
     header.site:has(#navToggle:checked) .mobile-panel{
       max-height:calc(100vh - 80px);max-height:calc(100dvh - 80px);overflow-y:auto;
       padding-top:.6rem;padding-bottom:2rem;
     }
   }
   @media (max-width:640px){
-    section{padding:3rem 0}
+    section{padding-top:3rem;padding-bottom:3rem}
     .pillars,.programs,.feature-grid,.seasons,.form-grid{grid-template-columns:1fr}
     .timeline::before{left:60px}
     .t-row{grid-template-columns:52px 24px 1fr}
@@ -621,7 +753,7 @@
     max-height:0;overflow:hidden;transition:max-height .25s ease;
     display:flex;flex-direction:column;gap:.9rem;
   }
-  .mobile-panel a{text-decoration:none;color:var(--text);font-weight:700;padding:.55rem 0;border-bottom:1px solid var(--border)}
+  .mobile-panel a{text-decoration:none;color:var(--text);font-weight:700;padding:.55rem 0;border-bottom:1px solid var(--bar-border)}
   .mobile-panel a.btn{border-bottom:0;margin-top:1.2rem;margin-bottom:.6rem;padding:1.1em 1.6em;font-size:1.05rem;min-height:56px}
   .mobile-panel .btn{display:none}
 
@@ -630,10 +762,10 @@
     position:relative;border-radius:22px;overflow:hidden;border:2px solid var(--border);
     box-shadow:0 10px 0 -4px var(--border);aspect-ratio:16/7;background:var(--surface-alt);
   }
-  .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;
-    /* Google's embed can't be themed, so flip it to a dark map */
-    filter:invert(90%) hue-rotate(180deg) brightness(.95) contrast(.9)}
-  .map-wrap{background:#101d2b}
+  .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  /* Google's embed can't be themed, so flip it to a dark map in dark mode */
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .map-wrap iframe{filter:invert(90%) hue-rotate(180deg) brightness(.95) contrast(.9)} }
+  :root[data-theme="dark"] .map-wrap iframe{filter:invert(90%) hue-rotate(180deg) brightness(.95) contrast(.9)}
   .map-actions{display:flex;flex-wrap:wrap;gap:.8rem 1.2rem;align-items:center;justify-content:space-between;margin-top:1.2rem}
   .map-actions p{margin:0;color:var(--text-muted);font-weight:700}
 
@@ -643,7 +775,7 @@
     .nav-row{padding:.5rem 0;gap:.6rem}
     .brand{gap:.5rem}
     .brand-name{font-size:1.1rem}
-    .hero{padding:3.2rem 0 2.8rem}
+    .hero{padding-top:3.2rem;padding-bottom:2.8rem}
     .hero-sub{font-size:1rem}
     .hero-ctas .btn{flex:1 1 100%}
     .trust-strip{gap:.5rem 1rem}
@@ -656,7 +788,7 @@
     .footer-brand .brand-mark{height:60px}
   }
   @media (max-width:480px){
-    .nav-row > .btn-primary{display:none}
+    .nav-actions > .btn-primary{display:none}
     .mobile-panel .btn{display:inline-flex}
   }
 </style>
@@ -682,11 +814,18 @@
       <a href="#seasons">Our Year</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a href="#enroll" class="btn btn-primary" style="flex-shrink:0">Book a Visit</a>
-    <input type="checkbox" id="navToggle">
-    <label for="navToggle" class="nav-toggle-label" aria-label="Toggle menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </label>
+    <div class="nav-actions">
+      <button type="button" class="theme-toggle" id="themeToggle" role="switch" aria-checked="false" aria-label="Dark mode" title="Switch light / dark mode">
+        <span class="tt-stars"></span>
+        <span class="tt-clouds"></span>
+        <span class="tt-knob"><span class="tt-crater c1"></span><span class="tt-crater c2"></span><span class="tt-crater c3"></span></span>
+      </button>
+      <a href="#enroll" class="btn btn-primary" style="flex-shrink:0">Book a Visit</a>
+      <input type="checkbox" id="navToggle">
+      <label for="navToggle" class="nav-toggle-label" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </label>
+    </div>
   </div>
   <div class="container">
     <div class="mobile-panel">
@@ -760,27 +899,36 @@
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Programs by age</p>
-        <h2>Two classes, one garden.</h2>
+        <h2>Three classes, one garden.</h2>
         <p>Children move up as they&rsquo;re ready &mdash; not on a fixed birthday &mdash; so the pace always matches the child.</p>
       </div>
-      <div class="programs programs-2">
+      <div class="programs">
         <div class="program-card">
           <div class="bloom-stage" aria-hidden="true">
-            <span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal dim"></span><span class="bloom-petal dim"></span><span class="bloom-petal dim"></span>
+            <span class="bloom-petal filled"></span><span class="bloom-petal dim"></span><span class="bloom-petal dim"></span><span class="bloom-petal dim"></span><span class="bloom-petal dim"></span>
           </div>
-          <h3>Baby Class</h3>
+          <h3>Play Group</h3>
+          <span class="program-age">2&frac12; &ndash; 3 years</span>
+          <p>A gentle first step away from home &mdash; settling in, sharing, and exploring through sand, water, music, and stories, with caring teachers close by.</p>
+          <a class="program-link" href="#enroll-form" data-program="Play Group (2.5-3yr)">Enquire about Play Group &rarr;</a>
+        </div>
+        <div class="program-card">
+          <div class="bloom-stage" aria-hidden="true">
+            <span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal dim"></span><span class="bloom-petal dim"></span>
+          </div>
+          <h3>LKG</h3>
           <span class="program-age">3 &ndash; 4 years</span>
           <p>First friendships and first letters &mdash; numbers and sounds hidden inside games, art, songs, and pretend play, with growing conversation in both Sinhala and English.</p>
-          <a class="program-link" href="#enroll-form" data-program="Baby Class (3-4yr)">Enquire about Baby Class &rarr;</a>
+          <a class="program-link" href="#enroll-form" data-program="LKG (3-4yr)">Enquire about LKG &rarr;</a>
         </div>
         <div class="program-card">
           <div class="bloom-stage" aria-hidden="true">
             <span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span><span class="bloom-petal filled"></span>
           </div>
-          <h3>Upper Class &middot; Grade-Ready</h3>
+          <h3>UKG &middot; Grade-Ready</h3>
           <span class="program-age">4 &ndash; 5 years</span>
           <p>Reading readiness, early numbers, and the everyday routines of a real classroom &mdash; so Grade 1 feels familiar from day one.</p>
-          <a class="program-link" href="#enroll-form" data-program="Upper Class (4-5yr)">Enquire about Upper Class &rarr;</a>
+          <a class="program-link" href="#enroll-form" data-program="UKG (4-5yr)">Enquire about UKG &rarr;</a>
         </div>
       </div>
     </div>
@@ -885,7 +1033,7 @@
       <div class="faq">
         <details open>
           <summary>What ages do you accept?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
-          <div class="a">Children aged 3 to 5 (Grade-1 ready), across our Baby Class (3&ndash;4 years) and Upper Class (4&ndash;5 years). Children move up when they&rsquo;re developmentally ready, not strictly by birthday.</div>
+          <div class="a">Children aged 2&frac12; to 5 (Grade-1 ready), across our Play Group (2&frac12;&ndash;3 years), LKG (3&ndash;4 years) and UKG (4&ndash;5 years). Children move up when they&rsquo;re developmentally ready, not strictly by birthday.</div>
         </details>
         <details>
           <summary>What languages does my child learn?<svg class="q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
@@ -969,8 +1117,9 @@
               <label for="program">Program of interest</label>
               <select id="program" name="program">
                 <option value="Not sure yet">Not sure yet</option>
-                <option value="Baby Class (3-4yr)">Baby Class (3&ndash;4yr)</option>
-                <option value="Upper Class (4-5yr)">Upper Class (4&ndash;5yr)</option>
+                <option value="Play Group (2.5-3yr)">Play Group (2&frac12;&ndash;3yr)</option>
+                <option value="LKG (3-4yr)">LKG (3&ndash;4yr)</option>
+                <option value="UKG (4-5yr)">UKG (4&ndash;5yr)</option>
               </select>
             </div>
             <div class="field full">
@@ -1014,7 +1163,7 @@
           <img class="brand-mark" src="sakura-logo.png" alt="Sakura Preschool logo" decoding="async">
           <span class="brand-name">Sakura Preschool</span>
         </div>
-        <p>A play-based preschool in Matara, Sri Lanka, building Sinhala &amp; English foundations for ages 3&ndash;5 years, since 2000.</p>
+        <p>A play-based preschool in Matara, Sri Lanka, building Sinhala &amp; English foundations for ages 2&frac12;&ndash;5 years, since 2000.</p>
         <div class="socials" aria-label="Sakura Preschool on social media">
           <a class="social social-wa" href="https://wa.me/94718980789" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp</a>
           <a class="social social-fb" href="https://www.facebook.com/profile.php?id=61560372808466" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9Z"/></svg>Facebook</a>
@@ -1076,6 +1225,24 @@
       a.addEventListener('click', function () { if (navToggle) navToggle.checked = false; });
     });
 
+    // ---- Light / dark theme toggle ----
+    var themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      var root = document.documentElement;
+      var syncToggle = function () {
+        themeToggle.setAttribute('aria-checked', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
+      };
+      syncToggle();
+      themeToggle.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.classList.add('theme-anim');
+        root.setAttribute('data-theme', next);
+        syncToggle();
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        setTimeout(function () { root.classList.remove('theme-anim'); }, 500);
+      });
+    }
+
     // ---- Connect the class cards and the child's age to the "Program of interest" dropdown ----
     var programSelect = document.getElementById('program');
     var ageInput = document.getElementById('childAge');
@@ -1090,8 +1257,9 @@
       ageInput.addEventListener('input', function () {
         if (programPicked) return;
         var years = parseInt(ageInput.value, 10);
-        programSelect.value = years === 3 ? 'Baby Class (3-4yr)'
-                            : (years === 4 || years === 5) ? 'Upper Class (4-5yr)'
+        programSelect.value = years === 2 ? 'Play Group (2.5-3yr)'
+                            : years === 3 ? 'LKG (3-4yr)'
+                            : (years === 4 || years === 5) ? 'UKG (4-5yr)'
                             : 'Not sure yet';
       });
     }
