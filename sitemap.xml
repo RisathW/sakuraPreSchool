@@ -2,12 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://sakura-pre-school.vercel.app/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://sakura-pre-school.vercel.app/u_63z5ddwwp4-children-8203962_1920.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sakura-pre-school.vercel.app/icon-512.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://sakura-pre-school.vercel.app/about.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://sakura-pre-school.vercel.app/images/staff/sunil-gamage.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sakura-pre-school.vercel.app/images/staff/larosha-wanniarachchi.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sakura-pre-school.vercel.app/images/staff/sadhi-sanchila.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sakura-pre-school.vercel.app/images/staff/dinithi-wanniarachchi.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sakura-pre-school.vercel.app/images/staff/nipuni-bhaghya.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sakura-pre-school.vercel.app/images/staff/madusha-dilini.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://sakura-pre-school.vercel.app/events.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
     <image:image><image:loc>https://sakura-pre-school.vercel.app/event-waren-heen-sare.jpg</image:loc></image:image>
     <image:image><image:loc>https://sakura-pre-school.vercel.app/event-poson-dansal.jpg</image:loc></image:image>
-    <image:image><image:loc>https://sakura-pre-school.vercel.app/icon-512.png</image:loc></image:image>
   </url>
 </urlset>
