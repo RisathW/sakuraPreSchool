@@ -461,6 +461,25 @@
     <svg class="divider to-bg" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,20 C200,50 400,0 600,25 C800,50 1000,0 1200,20 L1200,60 L0,60 Z"/></svg>
   </section>
 
+  <!-- LATEST FROM FACEBOOK (filled by /api/facebook-posts; falls back to the Facebook page plugin) -->
+  <section id="news" aria-labelledby="newsTitle">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow" style="justify-content:center">Fresh from our Facebook page</p>
+        <h2 id="newsTitle">Latest news &amp; moments at Sakura</h2>
+        <p>Our three most recent posts, updated automatically.</p>
+      </div>
+      <div class="fb-feed" id="fbFeed" aria-live="polite" aria-busy="true">
+        <div class="fb-card fb-skeleton" aria-hidden="true"></div>
+        <div class="fb-card fb-skeleton" aria-hidden="true"></div>
+        <div class="fb-card fb-skeleton" aria-hidden="true"></div>
+      </div>
+      <div class="fb-actions">
+        <a class="btn btn-ghost" href="https://www.facebook.com/profile.php?id=61560372808466" target="_blank" rel="noopener">See all posts on Facebook<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section id="faq">
     <div class="container">
@@ -642,6 +661,83 @@
 </footer>
 
 <script>
+  // ---- Latest 3 Facebook posts: /api/facebook-posts, or the Facebook page plugin if that isn't set up ----
+  (function(){
+    var feed = document.getElementById('fbFeed');
+    if (!feed) return;
+    var PAGE_URL = 'https://www.facebook.com/profile.php?id=61560372808466';
+
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text) n.textContent = text;
+      return n;
+    }
+    function safeUrl(u, fallback) {
+      return (typeof u === 'string' && /^https:\/\//.test(u)) ? u : fallback;
+    }
+    function done() { feed.setAttribute('aria-busy', 'false'); }
+
+    function showPlugin() {
+      feed.textContent = '';
+      var wrap = el('div', 'fb-plugin');
+      var f = document.createElement('iframe');
+      f.title = 'Sakura Preschool on Facebook';
+      f.loading = 'lazy';
+      f.setAttribute('allow', 'encrypted-media');
+      f.src = 'https://www.facebook.com/plugins/page.php?href=' + encodeURIComponent(PAGE_URL) +
+        '&tabs=timeline&width=500&height=640&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false';
+      wrap.appendChild(f);
+      feed.appendChild(wrap);
+      done();
+    }
+
+    function render(posts) {
+      feed.textContent = '';
+      posts.forEach(function (p) {
+        var card = el('a', 'fb-card');
+        card.href = safeUrl(p.url, PAGE_URL);
+        card.target = '_blank';
+        card.rel = 'noopener';
+        var img = safeUrl(p.image, '');
+        if (img) {
+          var fig = el('figure', 'fb-photo');
+          var im = document.createElement('img');
+          im.src = img; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async';
+          fig.appendChild(im);
+          if (p.isVideo) {
+            var play = el('span', 'fb-play');
+            play.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+            fig.appendChild(play);
+          }
+          card.appendChild(fig);
+        }
+        var body = el('div', 'fb-body');
+        var d = new Date(p.date);
+        if (!isNaN(d)) {
+          var t = el('time', 'fb-date', d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }));
+          t.dateTime = p.date;
+          body.appendChild(t);
+        }
+        if (p.text) body.appendChild(el('p', 'fb-text', p.text));
+        var more = el('span', 'fb-more', p.isVideo ? 'Watch on Facebook →' : 'Read on Facebook →');
+        more.appendChild(el('span', 'sr-only', ' (opens in a new tab)'));
+        body.appendChild(more);
+        card.appendChild(body);
+        feed.appendChild(card);
+      });
+      done();
+    }
+
+    fetch('/api/facebook-posts', { headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (json) {
+        if (json && json.posts && json.posts.length) render(json.posts);
+        else showPlugin();
+      })
+      .catch(showPlugin);
+  })();
+
   (function(){
     var field = document.getElementById('confettiField');
     if (field) {
